@@ -35,25 +35,36 @@ var shark = new picOption('shark', 'img/shark.jpg');
 var sweep = new picOption('sweep', 'img/sweep.png');
 var tauntaun = new picOption('tauntaun', 'img/tauntaun.jpg');
 var unicorn = new picOption('unicorn', 'img/unicorn.jpg');
-var usb = new  picOption('usb', 'img/usb.gif');
+var usb = new picOption('usb', 'img/usb.gif');
 var watercan = new picOption('watercan', 'img/water-can.jpg');
 var wine = new picOption('wine', 'img/wine-glass.jpg');
 
-function renderPics(){ // function that displays img on html
+function renderPics(imgOne){ // function that displays img on html
   var picOnetag = document.createElement('img'); // var for first img place
   var picTwotag = document.createElement('img'); // var for second img place
   var picThreetag = document.createElement ('img'); // var for third img place
-  picOnetag.src = bag.path; // attaches file path from Obj to createElement('img')
+  picOnetag.src = imgOne.path; // attaches file path from Obj to createElement('img')
   picOne.appendChild(picOnetag);
   picTwotag.src = gum.path;
-  picTwo.appendChild(picOnetag);
+  picTwo.appendChild(picTwotag);
   picThreetag.src = usb.path;
-  picThree.appendChild(picOnetag);
+  picThree.appendChild(picThreetag);
 }
-renderPics();
+// renderPics();
 
-
-
+// Generates random number
+function randomImageGen() {
+  return Math.floor(Math.random() * (picArray.length - 0 + 1)) + 0;
+}
+// function that selects random pics
+function selectPics() {
+  var randomIndex = randomImageGen();
+  console.log('randomIndex is ', randomIndex);
+  var imgOne = picArray[randomIndex];
+  console.log('imgOne is ', imgOne );
+  renderPics(imgOne);
+}
+selectPics();
 
 
 
