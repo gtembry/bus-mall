@@ -1,0 +1,10 @@
+.pic-holder {
+  display: inline-block;
+  outline: solid 5px orange;
+  width: 200px;
+  height: 200px;
+}
+img {
+width: 200px;
+height: 200px;
+}

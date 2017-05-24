@@ -1,14 +1,17 @@
 'use strict'
 
-//global variables
-var picArray = [];
-var shownPics = [];
-var list = document.getElementById('list')
-var counter = 0;
+// global variables
+var picArray = []; // displays pics
+var shownPics = []; // declares variables for the elements to show in html
+var picOne = document.getElementById('pic-one');
+var picTwo = document.getElementById('pic-two');
+var picThree = document.getElementById('pic-three');
+
+
 
 // object constructor
 function picOption(name, path) {
-  this.name=name;
+  this.name=name; // dynamic properties
   this.path=path;
   this.clickCount= 0;
   this.displayCount=0;
@@ -36,11 +39,14 @@ var usb = new  ('usb', 'img/usb.gif');
 var watercan = new  ('watercan', 'img/water-can.jpg');
 var wine = new  ('wine', 'img/wine-glass.jpg');
 
+
 // function that generates 3 random images
-function randomImageGen(max){
-  for (var i =0; i<3; i++)
-    shownPics.push(picArray[Math.floor(Math.random() * max)]);
-}
+// function randomImageGen(max){
+//   for (var i =0; i<3; i++)
+//     shownPics.push(picArray[Math.floor(Math.random() * max)]);
+// }
+// while(shownPics[0] === lastShown[0] || shownPics[0] === lastShown[1] || shownPics[0] === lastShown[2] || shownPics[0] === shownPics[1] || shownPics[0] === shownPics[2]){
+//     displayedImages.splice(0, 1, imagesArray[Math.floor(Math.random() * max)]);
 
 
 
