@@ -17,45 +17,40 @@ function picOption(name, path) {
   this.displayCount=0;
   picArray.push(this);
 }
+// instantiations of picOption Obj
+var bag = new picOption('bag', 'img/bag.jpg');
+var banana = new picOption('banana', 'img/banana.jpg');
+var bathroom = new picOption('bathroom', 'img/bathroom.jpg');
+var boots = new picOption('boots', 'img/boots.jpg');
+var breakfast = new picOption('breakfast', 'img/breakfast.jpg');
+var gum = new picOption('gum', 'img/bubblegum.jpg');
+var chair = new picOption('chair', 'img/chair.jpg');
+var cthulhu = new picOption('cthulhu', 'img/cthulhu.jpg');
+var dogduck = new picOption('dogduck', 'img/dog-duck.jpg');
+var dragon = new picOption('dragon', 'img/dragon.jpg');
+var pen = new picOption('pen', 'img/pen.jpg');
+var petsweep = new picOption('petsweep', 'img/pet-sweep.jpg');
+var scissors = new picOption('scissors', 'img/scissors.jpg');
+var shark = new picOption('shark', 'img/shark.jpg');
+var sweep = new picOption('sweep', 'img/sweep.png');
+var tauntaun = new picOption('tauntaun', 'img/tauntaun.jpg');
+var unicorn = new picOption('unicorn', 'img/unicorn.jpg');
+var usb = new  picOption('usb', 'img/usb.gif');
+var watercan = new picOption('watercan', 'img/water-can.jpg');
+var wine = new picOption('wine', 'img/wine-glass.jpg');
 
-var bag = new  ('bag', 'img/bag.jpg');
-var banana = new  ('banana', 'img/banana.jpg');
-var bathroom = new  ('bathroom', 'img/bathroom.jpg');
-var boots = new  ('boots', 'img/boots.jpg');
-var breakfast = new  ('breakfast', 'img/breakfast.jpg');
-var gum = new  ('gum', 'img/bubblegum.jpg');
-var chair = new  ('chair', 'img/chair.jpg');
-var cthulhu = new  ('cthulhu', 'img/cthulhu.jpg');
-var dogduck = new  ('dogduck', 'img/dog-duck.jpg');
-var dragon = new  ('dragon', 'img/dragon.jpg');
-var pen = new  ('pen', 'img/pen.jpg');
-var petsweep = new  ('petsweep', 'img/pet-sweep.jpg');
-var scissors = new  ('scissors', 'img/scissors.jpg');
-var shark = new  ('shark', 'img/shark.jpg');
-var sweep = new  ('sweep', 'img/sweep.png');
-var tauntaun = new  ('tauntaun', 'img/tauntaun.jpg');
-var unicorn = new  ('unicorn', 'img/unicorn.jpg');
-var usb = new  ('usb', 'img/usb.gif');
-var watercan = new  ('watercan', 'img/water-can.jpg');
-var wine = new  ('wine', 'img/wine-glass.jpg');
-
-
-// function that generates 3 random images
-// function randomImageGen(max){
-//   for (var i =0; i<3; i++)
-//     shownPics.push(picArray[Math.floor(Math.random() * max)]);
-// }
-// while(shownPics[0] === lastShown[0] || shownPics[0] === lastShown[1] || shownPics[0] === lastShown[2] || shownPics[0] === shownPics[1] || shownPics[0] === shownPics[2]){
-//     displayedImages.splice(0, 1, imagesArray[Math.floor(Math.random() * max)]);
-
-
-
-
-
-
-
-
-
+function renderPics(){ // function that displays img on html
+  var picOnetag = document.createElement('img'); // var for first img place
+  var picTwotag = document.createElement('img'); // var for second img place
+  var picThreetag = document.createElement ('img'); // var for third img place
+  picOnetag.src = bag.path; // attaches file path from Obj to createElement('img')
+  picOne.appendChild(picOnetag);
+  picTwotag.src = gum.path;
+  picTwo.appendChild(picOnetag);
+  picThreetag.src = usb.path;
+  picThree.appendChild(picOnetag);
+}
+renderPics();
 
 
 
