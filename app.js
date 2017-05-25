@@ -1,4 +1,4 @@
-'use strict'
+'use strict';
 
 // global variables
 var picArray = []; // displays pics
@@ -50,49 +50,66 @@ var usb = new picOption('usb', 'img/usb.gif');
 var watercan = new picOption('watercan', 'img/water-can.jpg');
 var wine = new picOption('wine', 'img/wine-glass.jpg');
 
-function renderPics(randomIndex1, randomIndex2, randomIndex3, imgOne, imgTwo, imgThree){ // function that displays img on html
-  var picOnetag = document.createElement('img'); // var for first img place
-  var picTwotag = document.createElement('img'); // var for second img place
-  var picThreetag = document.createElement ('img'); // var for third img place
-  picOnetag.src = imgOne.path; // attaches file path from Obj to createElement('img')
-  picOne.appendChild(picOnetag);
-  picTwotag.src = imgTwo.path;
-  picTwo.appendChild(picTwotag);
-  picThreetag.src = imgThree.path;
-  picThree.appendChild(picThreetag);
+function renderPics(randomIndex1, randomIndex2, randomIndex3, imgOne, imgTwo, imgThree) { // function that displays img on html
+  picOne.setAttribute('src', selectPics()[0].path);
+  //picTwotag.src = imgTwo.path;
+  picTwo.setAttribute('src', currentPics()[1].path);
+  //picThreetag.src = imgThree.path;
+  picThree.setAttribute('src', currentPics()[2].path);
 //places random image into array
   shownPics.push(picArray[randomIndex1]);
   shownPics.push(picArray[randomIndex2]);
   shownPics.push(picArray[randomIndex3]);
-
-  picArray.splice(randomIndex1, 1);
-  picArray.splice(randomIndex2, 1);
-  picArray.splice(randomIndex3, 1);
-
-
 }
 // renderPics();
 
 // Generates random number
 function randomNumberGen() {
-  return Math.floor(Math.random() * (picArray.length - 0 + 1)) + 0;
+  return Math.floor(Math.random() * (picArray.length + 1));
 }
 // function that selects random pics
 function selectPics() {
-  var randomIndex1 = randomNumberGen();
+  var currentPics = [];
+  var previousPics = [];
+
+  var firstPic = picArray.splice(randomNumberGen(), 1);
+  var secondPic = picArray.splice(randomNumberGen(), 1);
+  var thirdPic = picArray.splice(randomNumberGen(), 1);
+
+  // var firstPic = picArray.splice(randomNumberGen(), 1);
+  // var secondPic = picArray.splice(randomNumberGen(), 1);
+  // var thirdPic = picArray.splice(randomNumberGen(), 1);
+  // .splice(randomNumberGen(), 1);
+  currentPics.push(firstPic);
+  currentPics.push(secondPic);
+  currentPics.push(thirdPic);
+  // currentPics.push(firstPic[0]);
+  // currentPics.push(firstPic[0]);
+
+    // picArray.splice(randomNumberGen(), 1);
+    // picArray.splice(randomNumberGen(), 1);
+  previousPics.push(currentPics);
+  console.log(previousPics);
+  console.log(currentPics);
+  picArray.push(previousPics);
+  console.log(picArray);
+  console.log(picArray);
+  return currentPics;
+  // currentPics.push(firstPic);
+  // currentPics.push(secondPic);
+  // currentPics.push(thirdPic);
+  //here, we are pushing pics to current array
   // console.log('randomIndex is ', randomIndex);
-  var imgOne = picArray[randomIndex1];
-  var randomIndex2 = randomNumberGen();
-  var imgTwo = picArray[randomIndex2];
-  var randomIndex3 = randomNumberGen();
-  var imgThree = picArray[randomIndex3];
-  // console.log('imgOne is ', imgOne );
-  renderPics(randomIndex1, randomIndex2, randomIndex3, imgOne, imgTwo, imgThree);
+  // var imgOne = picArray[randomIndex1];
+  // var randomIndex2 = randomNumberGen();
+  // var imgTwo = picArray[randomIndex2];
+  // var randomIndex3 = randomNumberGen();
+  // var imgThree = picArray[randomIndex3];
+  // // console.log('imgOne is ', imgOne );
+  // renderPics(randomIndex1, randomIndex2, randomIndex3, imgOne, imgTwo, i mgThree);
 
 }
 selectPics();
-
-
 
 
 

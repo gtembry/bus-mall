@@ -1,10 +1,28 @@
+h1 {
+  font-size: 80px;
+  font-style: italic;
+  text-align: center;
+}
+
 .pic-holder {
+  margin-left: 50px;
   display: inline-block;
   outline: solid 5px orange;
-  width: 200px;
-  height: 200px;
+  width: 230px;
+  height: 230px;
+
 }
 img {
-width: 200px;
-height: 200px;
+width: 230px;
+height: 230px;
+}
+
+#pic-field {
+ margin: 0 auto;
+ width: 900px;
+
+}
+
+section div {
+  margin-top: 50px;
 }
