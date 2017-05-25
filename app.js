@@ -69,7 +69,6 @@ function renderPics(randomIndex1, randomIndex2, randomIndex3, imgOne, imgTwo, im
   shownPics.push(picArray[randomIndex2]);
   shownPics.push(picArray[randomIndex3]);
 }
-// renderPics();
 
 // Generates random number
 function randomNumberGen() {
