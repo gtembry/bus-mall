@@ -1,4 +1,4 @@
-'use strict'
+'use strict';
 
 // global variables
 var picArray = []; // displays pics
@@ -119,12 +119,3 @@ function selectPics() {
 
 }
 selectPics();
-
-
-
-
-// generates array of rando imagesm
-// function randomImages(max){
-//   for (var i =0; i<3; i++)
-//   displayedImages.push(imagesArray[Math.floor(Math.random() * max)]);
-// compares current array[i] to last shown array, and to the other two positions in the current array,

@@ -3,25 +3,30 @@
   <head>
     <meta charset="utf-8">
     <title>Bus Mall</title>
-    <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="reset.css">
-    <h1>Take a Pick!</h1>
+    <link rel="stylesheet" href="style.css">
   </head>
+
   <body>
-<main>
-  <section id="pic-field">
-    <div class="pic-holder" id="pic-one"></div>
-      <div class="pic-holder" id="pic-two"></div>
-        <div class="pic-holder" id="pic-three"></div>
+    <header>
+      <h1>Bus Mall!!</h1>
+    </header>
+    <main>
+      <section id="pic-field">
+        <div>
+          <img class="pic-holder" id="pic-one" src="">
+          <img class="pic-holder" id="pic-two" src="">
+          <img class="pic-holder" id="pic-three" src="">
+        </div>
       </section>
 
-      <!-- <section id="showResults">
-        <canvas id="chart" width="400" height="400">
-      </section> -->
-</main>
-<!-- <script src="chart.js"></script> -->
+      <div id="results"></div>
 
-</script>
+      </div>
+      <canvas id="canvas" width="400px" height="400px"></canvas>
+    </main>
     <script src="app.js"></script>
+    <footer></footer>
   </body>
+
 </html>
