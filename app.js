@@ -3,21 +3,36 @@
 // global variables
 var picArray = []; // displays pics
 var shownPics = []; // declares variables for the elements to show in html
+var resultsArray = [];
 var picOne = document.getElementById('pic-one');
 var picTwo = document.getElementById('pic-two');
 var picThree = document.getElementById('pic-three');
-//
-picOne.addEventListener('click', function(){
-  selectPics();
-});
+var totalClicks = 0;
 
-picTwo.addEventListener('click', function(){
+var clickEvent = function(){
+  var imgID = event.target.id;
+  for(var i = 0; i < picArray.length; i++){
+    if (picArray[i].name === imgID) {
+      picArray[i].clickCount++;
+    }
+  }
   selectPics();
-});
+  totalClicks++;
+  if (totalClicks >= 25) {
+    picOne.removeEventListener('click', clickEvent);
+    picTwo.removeEventListener('click', clickEvent);
+    picThree.removeEventListener('click', clickEvent);
+    results();
+  }
+  console.log('totalClicks =', totalClicks);
+};
 
-picThree.addEventListener('click', function(){
-  selectPics();
-});
+picOne.addEventListener('click', clickEvent);
+picTwo.addEventListener('click', clickEvent);
+picThree.addEventListener('click', clickEvent);
+
+// var canvas = document.getElementById('chart');
+// var ctx = canvas.getContext('2d');
 
 
 // object constructor
@@ -50,60 +65,60 @@ var usb = new picOption('usb', 'img/usb.gif');
 var watercan = new picOption('watercan', 'img/water-can.jpg');
 var wine = new picOption('wine', 'img/wine-glass.jpg');
 
-function renderPics(randomIndex1, randomIndex2, randomIndex3, imgOne, imgTwo, imgThree){ // function that displays img on html
-  var picOnetag = document.createElement('img'); // var for first img place
-  var picTwotag = document.createElement('img'); // var for second img place
-  var picThreetag = document.createElement ('img'); // var for third img place
-  picOnetag.src = imgOne.path; // attaches file path from Obj to createElement('img')
-  picOne.appendChild(picOnetag);
-  picTwotag.src = imgTwo.path;
-  picTwo.appendChild(picTwotag);
-  picThreetag.src = imgThree.path;
-  picThree.appendChild(picThreetag);
-//places random image into array
+function renderPics(randomIndex1, randomIndex2, randomIndex3, imgOne, imgTwo, imgThree) { // function that displays img on html
+  console.log('imgOne is', imgOne);
+  picOne.setAttribute('src', imgOne.path);
+  picOne.setAttribute('id', imgOne.name);
+
+  console.log('imgTwo is', imgTwo);
+  picTwo.setAttribute('src', imgTwo.path);
+  picTwo.setAttribute('id', imgTwo.name);
+
+  console.log('imgThree is', imgThree);
+  picThree.setAttribute('src', imgThree.path);
+  picThree.setAttribute('id', imgThree.name);
+
   shownPics.push(picArray[randomIndex1]);
   shownPics.push(picArray[randomIndex2]);
   shownPics.push(picArray[randomIndex3]);
-
-  picArray.splice(randomIndex1, 1);
-  picArray.splice(randomIndex2, 1);
-  picArray.splice(randomIndex3, 1);
-
-
 }
-// renderPics();
+function results() {
+  console.log('results ran');
+  var list = document.getElementById('results');
+  var item = document.createElement('ul');
+  for (var i = 0; i < picArray.length; i++) {
+    resultsArray.push('<li> name: ' + picArray[i].name + 'Clicks: ' + picArray[i].clickCount + ' times shown: ' + picArray[i].displayCount + '</li>');
+  }
+  resultsArray = resultsArray.join(',');
+  item.innerHTML = resultsArray;
+  list.appendChild(item);
+}
 
 // Generates random number
 function randomNumberGen() {
-  return Math.floor(Math.random() * (picArray.length - 0 + 1)) + 0;
+  return Math.floor(Math.random() * (picArray.length));
 }
 // function that selects random pics
 function selectPics() {
   var randomIndex1 = randomNumberGen();
-  // console.log('randomIndex is ', randomIndex);
   var imgOne = picArray[randomIndex1];
+
   var randomIndex2 = randomNumberGen();
+  while(randomIndex2 === randomIndex1) {
+    randomIndex2 = randomNumberGen();
+  }
   var imgTwo = picArray[randomIndex2];
+
   var randomIndex3 = randomNumberGen();
+  while (randomIndex3 === randomIndex1 || randomIndex3 === randomIndex2){
+    randomIndex3 = randomNumberGen();
+  }
   var imgThree = picArray[randomIndex3];
   // console.log('imgOne is ', imgOne );
+  imgOne.displayCount++;
+  imgTwo.displayCount++;
+  imgThree.displayCount++;
   renderPics(randomIndex1, randomIndex2, randomIndex3, imgOne, imgTwo, imgThree);
 
 }
 selectPics();
-
-
-
-
-
-
-
-
-
-
-
-// generates array of rando imagesm
-// function randomImages(max){
-//   for (var i =0; i<3; i++)
-//   displayedImages.push(imagesArray[Math.floor(Math.random() * max)]);
-// compares current array[i] to last shown array, and to the other two positions in the current array,
