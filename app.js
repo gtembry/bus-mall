@@ -84,6 +84,7 @@ function results() {
   list.appendChild(item);
 }
 
+
 // Generates random number
 function randomNumberGen() {
   return Math.floor(Math.random() * (picArray.length));
