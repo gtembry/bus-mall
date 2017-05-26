@@ -3,6 +3,7 @@
 // global variables
 var picArray = []; // displays pics
 var shownPics = []; // declares variables for the elements to show in html
+var resultsArray = [];
 var picOne = document.getElementById('pic-one');
 var picTwo = document.getElementById('pic-two');
 var picThree = document.getElementById('pic-three');
@@ -26,7 +27,6 @@ picThree.addEventListener('click', function(){
   totalClicks++;
   console.log('totalClicks =', totalClicks);
 });
-
 
 // object constructor
 function picOption(name, path) {
@@ -59,44 +59,60 @@ var watercan = new picOption('watercan', 'img/water-can.jpg');
 var wine = new picOption('wine', 'img/wine-glass.jpg');
 
 function renderPics(randomIndex1, randomIndex2, randomIndex3, imgOne, imgTwo, imgThree) { // function that displays img on html
+  console.log('imgOne is', imgOne);
   picOne.setAttribute('src', imgOne.path);
   //picTwotag.src = imgTwo.path;
+  console.log('imgTwo is', imgTwo);
   picTwo.setAttribute('src', imgTwo.path);
   //picThreetag.src = imgThree.path;
+  console.log('imgThree is', imgThree);
   picThree.setAttribute('src', imgThree.path);
 //places random image into array
   shownPics.push(picArray[randomIndex1]);
   shownPics.push(picArray[randomIndex2]);
   shownPics.push(picArray[randomIndex3]);
 }
-// renderPics();
+function results() {
+  console.log('results ran');
+  var list = document.getElementById('results');
+  var item = document.createElement('ul');
+  for (var i = 0; i < picArray.length; i++) {
+    resultsArray.push('<li> name: ' + picArray[i].name + 'Clicks: ' + picArray[i].clickCount + ' times shown: ' + picArray[i].displayCount + '</li>');
+  }
+  resultsArray = resultsArray.join(',');
+  item.innerHTML = resultsArray;
+  list.appendChild(item);
+}
 
 // Generates random number
 function randomNumberGen() {
-  return Math.floor(Math.random() * (picArray.length + 1)) + 0;
+  return Math.floor(Math.random() * (picArray.length));
 }
 // function that selects random pics
 function selectPics() {
   var randomIndex1 = randomNumberGen();
-  // console.log('randomIndex is ', randomIndex);
   var imgOne = picArray[randomIndex1];
 
   var randomIndex2 = randomNumberGen();
   while(randomIndex2 === randomIndex1) {
-    randomIndex2 = randomNumberGen;
+    randomIndex2 = randomNumberGen();
   }
   var imgTwo = picArray[randomIndex2];
 
   var randomIndex3 = randomNumberGen();
   while (randomIndex3 === randomIndex1 || randomIndex3 === randomIndex2){
-    randomIndex3 = randomNumberGen;
+    randomIndex3 = randomNumberGen();
   }
   var imgThree = picArray[randomIndex3];
   // console.log('imgOne is ', imgOne );
+  if (totalClicks === 24) {
+    results();
+  }
   renderPics(randomIndex1, randomIndex2, randomIndex3, imgOne, imgTwo, imgThree);
 
 }
 selectPics();
+
 
 
 
