@@ -79,6 +79,7 @@ function renderPics(randomIndex1, randomIndex2, randomIndex3, imgOne, imgTwo, im
   shownPics.push(picArray[randomIndex2]);
   shownPics.push(picArray[randomIndex3]);
 }
+
 function results() {
   console.log('results ran');
   var list = document.getElementById('results');
@@ -86,9 +87,46 @@ function results() {
   for (var i = 0; i < picArray.length; i++) {
     resultsArray.push('<li> name: ' + picArray[i].name + 'Clicks: ' + picArray[i].clickCount + ' times shown: ' + picArray[i].displayCount + '</li>');
   }
-  resultsArray = resultsArray.join(',');
+  resultsArray = resultsArray.join('');
   item.innerHTML = resultsArray;
   list.appendChild(item);
+  createChart();
+}
+
+function createChart() {
+  var canvas = document.getElementById('canvas');
+  var ctx = canvas.getContext('2d');
+
+  var nameArr = [];
+  var clicksArr = [];
+  var shownArr = [];
+
+  for(var i = 0; i < picArray.length; i++){
+    nameArr.push(picArray[i].name);
+    clicksArr.push(picArray[i].clickCount);
+    shownArr.push(picArray[i].displayCount);
+  }
+  new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: nameArr,
+      datasets: [
+        {
+          label: '# of clicks',
+          data: clicksArr,
+          backgroundColor: '#5442B2'
+        },
+        {
+          label: '# of times shown',
+          data: shownArr,
+          backgroundColor: '#B2A85F'
+        }
+      ]
+    },
+    options: {
+      responsive: false
+    }
+  });
 }
 
 // Generates random number
