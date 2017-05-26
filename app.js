@@ -31,9 +31,6 @@ picOne.addEventListener('click', clickEvent);
 picTwo.addEventListener('click', clickEvent);
 picThree.addEventListener('click', clickEvent);
 
-// var canvas = document.getElementById('chart');
-// var ctx = canvas.getContext('2d');
-
 
 // object constructor
 function picOption(name, path) {
@@ -122,3 +119,12 @@ function selectPics() {
 
 }
 selectPics();
+
+
+
+
+// generates array of rando imagesm
+// function randomImages(max){
+//   for (var i =0; i<3; i++)
+//   displayedImages.push(imagesArray[Math.floor(Math.random() * max)]);
+// compares current array[i] to last shown array, and to the other two positions in the current array,
